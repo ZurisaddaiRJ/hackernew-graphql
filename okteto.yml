@@ -1,13 +1,13 @@
 build:
-  adsoftsito:
-    image: okteto.dev/adsoftsito:latest
+ zurisaddairj:  # cambiar por su namespace de okteto
+   image: okteto.dev/graphql-zurisaddairj:latest  # cambiar por su namespace de okteto
 
 deploy:
-  - okteto build # build the image with the latest code
-  - kubectl apply -f manifests # create all the resources in kubernetes
+ - okteto build # build the image with the latest code
+ - kubectl apply -f manifests # create all the resources in kubernetes
 dev:
-  adsoftsito:
-    command: bash
-    sync:
-    - .:/hackernews
-    
+ adsoftsito:
+   command: bash
+   sync:
+   - .:/hackernews   # cambiar por su proyecto
+

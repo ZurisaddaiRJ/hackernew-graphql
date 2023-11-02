@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adsoftsito
+  name: graphql-zurisaddairj
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: adsoftsito
+      app: graphql-zurisaddairj
   template:
     metadata:
       labels:
-        app: adsoftsito
+        app: graphql-zurisaddairj
     spec:
       containers:
-      - image: okteto.dev/adsoftsito:latest
-        name: adsoftsito
-        envFrom:
-        - configMapRef:
-            name: adsoftsito-config
+      - image: okteto.dev/graphql-zurisaddairj:latest
+        name: zurisaddairj
+        # envFrom:
+        # - configMapRef:
+            # name: zurisaddairj-config
         livenessProbe:
           httpGet:
             path: /ht/
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: adsoftsito
+  name: graphql-zurisaddairj
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "adsoftsito"
+  - name: "graphql-zurisaddairj"
     port: 8080
   selector:
-    app: adsoftsito
+    app: graphql-zurisaddairj

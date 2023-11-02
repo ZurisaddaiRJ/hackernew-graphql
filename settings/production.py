@@ -11,17 +11,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+#SECRET_KEY = 'zb9q0#^a8ov@euhljs_=^#c=81goi_h(2mq$c!z5+_bj302od*'
 SECRET_KEY = config("PROD_SECRET_KEY", default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'health_check',
+    'health_check',  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,10 +41,35 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'links',
+    'Year',
+    'Rating',
+    'Votes',
+    'Metascore',
+    'Action',
+    'Adventure',
+    'Aniimation',
+    'Biography',
+    'Comedy',
+    'Crime',
+    'Drama',
+    'Family',
+    'Fantasy',
+    'History',
+    'Horror',
+    'Music',
+    'Musical',
+    'Mystery',
+    'Romance',
+    'Sport',
+    'Thriller',
+    'War',
+    'Western',
+    'Success',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,7 +77,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'hackernews.urls'
@@ -78,6 +102,7 @@ WSGI_APPLICATION = 'hackernews.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
 PROD_DATABASE = config("PROD_DATABASE", default='')
 PROD_USER = config("PROD_USER", default='')
 PROD_PASSWORD = config("PROD_PASSWORD", default='')
@@ -86,7 +111,7 @@ PROD_PORT = config("PROD_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': PROD_DATABASE,
+        'NAME': PROD_DATABASE,  
         'USER': PROD_USER,
         'PASSWORD': PROD_PASSWORD,
         'HOST': PROD_HOST,
@@ -96,6 +121,18 @@ DATABASES = {
         #},
     },
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'btwhcsde',
+#        'USER': 'btwhcsde',
+#        'PASSWORD': 'I-tbkn1406KQLRPYZa9GY-iK4R7aGvJU',
+#        'HOST': 'heffalump.db.elephantsql.com',
+#        'PORT': '5433',
+#    }
+#}
 
 
 # Password validation
@@ -148,3 +185,4 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
